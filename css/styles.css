@@ -1,0 +1,204 @@
+:root {
+  /* ## Colors
+  ### Primary */
+  --StrongCyan: hsl(172, 67%, 45%);
+
+  /* ### Neutral */
+  --VeryDarkCyan: hsl(183, 100%, 15%);
+  --DarkGrayishCyan: hsl(186, 14%, 43%);
+  --GrayishCyan: hsl(184, 14%, 56%);
+  --LightGrayishCyan: hsl(185, 41%, 84%);
+  --VeryLightGrayishCyan: hsl(189, 41%, 97%);
+  --White: hsl(0, 0%, 100%);
+  --Red: hsl(354, 70%, 54%);
+}
+* {
+  box-sizing: border-box;
+  font-family: "Space Mono", monospace;
+}
+body {
+  min-height: 97vh;
+  background-color: var(--LightGrayishCyan);
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.logo {
+  max-height: 50px;
+  max-width: 50px;
+}
+/**
+*
+* Comentario contenedor
+*
+**/
+.container__main {
+  width: 810px;
+  height: 398px;
+  box-shadow: 5px 5px 20px var(--DarkGrayishCyan);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: var(--White);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  grid-template-rows: 350px;
+}
+/**
+*
+* Comentario lado derecho
+*
+**/
+.calculator {
+  /* font-size: 1rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.lbl,
+.text {
+  color: var(--GrayishCyan);
+}
+.inputs {
+  position: relative;
+}
+.txt {
+  color: var(--VeryDarkCyan);
+  margin-top: 5px;
+  text-align: right;
+  padding: 5px 10px;
+  width: 100%;
+  background: var(--VeryLightGrayishCyan);
+  border: 2px solid var(--VeryLightGrayishCyan);
+  font-size: 18px;
+  border-radius: 6px;
+}
+.icon {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+}
+.buttons {
+  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.btn {
+  background: var(--VeryDarkCyan);
+  border: 2px solid var(--VeryDarkCyan);
+  padding: 5px 10px;
+  font-size: 18px;
+  width: 100px;
+  border-radius: 6px;
+  color: var(--White);
+  cursor: pointer;
+}
+.Custom {
+  margin-top: 5px;
+  text-align: right;
+  padding: 5px 10px;
+  font-size: 18px;
+  width: 100px;
+  border-radius: 6px;
+  color: var(--VeryDarkCyan);
+  background: var(--VeryLightGrayishCyan);
+  border: 2px solid var(--VeryLightGrayishCyan);
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+.lblError {
+  display: none;
+  font-size: 0.8rem;
+  color: var(--Red);
+}
+/**
+*
+* Comentario lado izquierdo
+*
+**/
+.result {
+  background-color: var(--VeryDarkCyan);
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.totales {
+  display: flex;
+  justify-content: space-between;
+}
+.Amount {
+  color: var(--White);
+}
+.printResult {
+  color: var(--StrongCyan);
+  font-size: 38px;
+  margin-top: 0;
+}
+.Amount > span {
+  color: var(--StrongCyan);
+  display: block;
+}
+.btnResul {
+  background: var(--StrongCyan);
+  border: none;
+  padding: 5px 10px;
+  font-size: 18px;
+  width: 100%;
+  border-radius: 6px;
+  color: var(--VeryDarkCyan);
+  cursor: pointer;
+}
+/* - Comentario creditos - */
+.attribution {
+  grid-area: footer;
+  font-size: 11px;
+  text-align: center;
+}
+.creditos {
+  color: hsl(228, 45%, 44%);
+}
+/**
+*
+* Comentario: elementos invalidos
+*
+**/
+.lblError-activo {
+  display: block;
+  color: var(--Red);
+}
+.btn-active {
+  background-color: var(--StrongCyan);
+  border: 2px solid var(--StrongCyan);
+  color: var(--White);
+}
+.txt-error {
+  border: 2px solid var(--Red);
+  outline: none;
+}
+/**
+*
+* Comentario hovers
+*
+**/
+.btn:hover {
+  border: 2px solid var(--StrongCyan);
+  background-color: var(--StrongCyan);
+  color: var(--White);
+  opacity: 0.7;
+}
+.txt:focus {
+  border: 2px solid var(--StrongCyan);
+  outline: none;
+}
+.Custom:focus {
+  border: 2px solid var(--StrongCyan);
+  outline: none;
+}

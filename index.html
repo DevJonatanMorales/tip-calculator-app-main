@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+  <img class="logo" src="./assets/images/logo.svg" alt="logo">
+
+  <form class="container__main" id="formulario">
+
+    <div class="calculator">
+
+      <div>
+
+        <label class="lbl" for="dollar">Bill</label>
+        
+        <div class="inputs">
+        
+          <input class="txt" id="dollar" type="text" placeholder="0">
+        
+          <img src="./assets/images/icon-dollar.svg" alt="dollar" class="icon">
+        
+        </div>
+
+      </div>
+
+      <div>
+
+        <p class="text">Select Tip %</p>
+        
+        <div class="buttons">
+          <button class="btn btn-active" type="submit">5%</button>
+          <button class="btn" type="submit">10%</button>
+          <button class="btn" type="submit">15%</button>
+          <button class="btn" type="submit">25%</button>
+          <button class="btn" type="submit">50%</button>
+          <input class="Custom" type="text" id="txtNumbre" placeholder="Custom">
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="footer">
+          <label class="lbl" for="persona">Number of People</label>
+          <label class="lblError" id="lbError">Can't be zero</label>
+        </div>
+        
+        <div class="inputs">
+        
+          <input class="txt" id="persona" type="text" value="1">
+        
+          <img src="./assets/images/icon-person.svg" alt="dollar" class="icon">
+        
+        </div>
+        </div>
+
+      </div>
+
+    <div class="result">
+
+      <div class="totales">
+
+        <p class="Amount">
+          Tip Amount
+          <span>
+            / person
+          </span>
+        </p>
+
+        <p class="printResult" id="resultAmount">$0.00</p>
+      </div>
+      
+      <div class="totales">
+          
+        <p class="Amount">
+          Total
+          <span>
+            / person
+          </span>
+        </p>
+
+        <p class="printResult" id="resultTotal">$0.00</p>
+
+      </div>
+
+      <button class="btnResul" id="btnResul" type="submit" >
+        Reset
+      </button>
+    </div>
+
+  </form>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a class="creditos" href="#">Your Name Here</a>.
+  </div>
+
+  <script src="./js/app.js"></script>
+</body>
+</html>

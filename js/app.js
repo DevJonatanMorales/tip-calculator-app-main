@@ -1,5 +1,3 @@
-/* - Comentario formaulari - */
-const formulario = document.getElementById("formulario");
 /* - Comentario inputs - */
 const txtCantiDollar = document.getElementById("dollar");
 const txtCantiPersona = document.getElementById("persona");
@@ -20,8 +18,8 @@ let messegerError = document.getElementById("lbError");
  *
  **/
 let cantiDollar = 0;
-let cantiPersona = 0;
-let cantiPorcentaje = 0;
+let cantiPersona = 1; //valor por defecto
+let cantiPorcentaje = 5; //valor por defecto
 let Amount = 0;
 let total = 0;
 
@@ -31,7 +29,23 @@ const Expresiones = {
   cantCustom: /^[0-300]{6,10}$/,
 };
 
-/* - Comentario: obtencion del valor del porcentaje - */
+/* - Comentario: calculamos el total y el porcentaje de la porpina - */
+const calcularTotal = () => {
+  Amount = parseFloat((cantiDollar * cantiPorcentaje) / 100 / cantiPersona);
+  Total = (parseFloat(cantiDollar) + parseFloat(Amount)) / cantiPersona;
+
+  console.log(
+    `cantidad dolar: ${cantiDollar}, porcentaje: ${cantiPorcentaje}, numero de persona: ${cantiPersona}, resultado amount: ${Amount}, total: ${Total}`
+  );
+
+  if (cantiDollar > 0) {
+    resultAmount.innerHTML = `$${Amount.toFixed(2)}`;
+    resultTotal.innerHTML = `$${Total.toFixed(2)}`;
+    btnReset.disabled = false;
+  }
+};
+
+/* - Comentario: obtencion del valor del porcentaje de los botones - */
 btns.forEach((btn) => {
   btn.addEventListener("click", () => {
     /* - Comentario: removemos la clase activa - */
@@ -44,17 +58,22 @@ btns.forEach((btn) => {
 
     btn.classList.add("btn-active");
     cantiPorcentaje = btn.innerHTML.slice(0, -1);
+
+    calcularTotal();
   });
 });
 
+/* - Comentario: obtenemos el valor del porcentaje del custom - */
 const customValue = () => {
   /* - Comentario buttons are formatted - */
   btns.forEach((item) => {
     item.classList.remove("btn-active");
   });
   cantiPorcentaje = txtCantiCustom.value;
+  calcularTotal();
 };
 
+/* - Comentario: validamos el numero de personas, que no sea cero - */
 const validationNumberPeople = () => {
   if (txtCantiPersona.value == "") {
     messegerError.classList.add("lblError-activo");
@@ -66,18 +85,66 @@ const validationNumberPeople = () => {
   }
 };
 
-txtCantiCustom.addEventListener("blur", customValue);
-txtCantiCustom.addEventListener("keyup", customValue);
+/* - Comentario  - */
+const reset = () => {
+  console.log("click");
+  cantiDollar = 0;
+  cantiPersona = 1; //valor por defecto
+  cantiPorcentaje = 5; //valor por defecto
+  Amount = 0;
+  total = 0;
 
-txtCantiPersona.addEventListener("blur", validationNumberPeople);
-txtCantiPersona.addEventListener("keyup", validationNumberPeople);
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      /* - Comentario: removemos la clase activa - */
+      btns.forEach((item) => {
+        item.classList.remove("btn-active");
+      });
+    });
+  });
 
-const calcular = () => {};
-formulario.addEventListener("submit", (e) => {
-  e.preventDefault();
-  console.log(
-    `cantidad en dolares: ${cantiDollar},
-    cantidad de personas es: ${cantiPersona},
-    porcentaje: ${cantiPorcentaje}`
-  );
+  btns[0].classList.add("btn-active");
+
+  txtCantiDollar.value = "";
+  txtCantiDollar.placeholder = "0.00";
+
+  txtCantiCustom.value = "";
+  txtCantiCustom.placeholder = "Custom";
+
+  txtCantiPersona.value = "1";
+
+  resultAmount.innerHTML = `$0.00`;
+  resultTotal.innerHTML = `$0.00`;
+
+  btnReset.disabled = true;
+};
+
+txtCantiCustom.addEventListener("blur", () => {
+  customValue();
+  calcularTotal();
 });
+txtCantiCustom.addEventListener("keyup", () => {
+  customValue();
+  calcularTotal();
+});
+
+txtCantiPersona.addEventListener("blur", () => {
+  validationNumberPeople();
+  calcularTotal();
+});
+txtCantiPersona.addEventListener("keyup", () => {
+  validationNumberPeople();
+  calcularTotal();
+});
+
+txtCantiDollar.addEventListener("blur", () => {
+  cantiDollar = txtCantiDollar.value;
+  calcularTotal();
+});
+
+txtCantiDollar.addEventListener("keyup", () => {
+  cantiDollar = txtCantiDollar.value;
+  calcularTotal();
+});
+
+btnReset.addEventListener("click", reset);

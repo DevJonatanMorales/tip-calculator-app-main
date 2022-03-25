@@ -17,7 +17,7 @@
   font-family: "Space Mono", monospace;
 }
 body {
-  min-height: 97vh;
+  min-height: 100vh;
   background-color: var(--LightGrayishCyan);
   font-weight: 700;
   display: flex;
@@ -201,4 +201,31 @@ body {
 .Custom:focus {
   border: 2px solid var(--StrongCyan);
   outline: none;
+}
+
+/**
+*
+* Comentario: media screen
+*
+**/
+@media screen and (max-width: 838px) {
+  .container__main {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    grid-template-rows: auto auto;
+  }
+  .buttons {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+  }
+  .btn,
+  .Custom {
+    margin: 1rem 0;
+  }
 }
